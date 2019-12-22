@@ -1,0 +1,5 @@
+com\YassineGroup\repository\UserRepository.class
+com\YassineGroup\model\User.class
+com\YassineGroup\controller\UserCotroller.class
+com\YassineGroup\service\UserService.class
+com\YassineGroup\Application.class
