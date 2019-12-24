@@ -27,8 +27,8 @@ public class UserService {
         return userRepository.findByEmail(email);
     }
 
-    public User findByUsernameAndPassword(String name, String password) {
-        return userRepository.findByNameAndPassword(name, password);
+    public User findUserByUsernameAndPassword(String username, String password) {
+        return userRepository.findByUsernameAndPassword(username, password);
     }
 
 }

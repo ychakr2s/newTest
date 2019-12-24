@@ -11,6 +11,9 @@ public class User {
     private String name;
     private String lastname;
 
+
+    private String username;
+
     @Column(name = "email")
     private String email;
     private String password;
@@ -18,11 +21,11 @@ public class User {
     public User() {
     }
 
-    public User(String name, String lastname, String email_Adresse, String password) {
+    public User(String name, String lastname, String username, String email_Adresse, String password) {
         super();
-//        this.id = id;
         this.name = name;
         this.lastname = lastname;
+        this.username = username;
         this.email = email_Adresse;
         this.password = password;
     }
@@ -51,11 +54,19 @@ public class User {
         this.lastname = lastname;
     }
 
-    public String getEmail_Adresse() {
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail_Adresse(String email_Adresse) {
+    public void setEmail(String email_Adresse) {
         this.email = email_Adresse;
     }
 

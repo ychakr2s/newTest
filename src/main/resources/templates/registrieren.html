@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" href="css/jquery-ui.css"/>
+    <link rel="stylesheet" href="css/all.css"/>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"/>
+
+
+    <!-- script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" / -->
+
+    <title>Mitfahren</title>
+</head>
+<!-- This snippet uses Font Awesome 5 Free as a dependency. You can download it at fontawesome.io! -->
+
+<body class="body">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="/">
+            <span>Ride- </span><span>Sharing</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="main-nav">
+            <ul class="navbar-nav ml-auto" id="myDIV">
+                <li class="nav-item">
+                    <a class="nav-link einfuer" href="/">Home </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link anwendun" href="/register">Registrieren</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/loggin">Einloggen</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- End Nav Bar  -->
+<div class="register">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                <div class="card card-signin my-5">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Register</h5>
+
+                        <form class="form-signin" action="#" th:action="@{/register}" th:object="${user}" method="post">
+
+                            <div class="form-label-group">
+                                <input type="text" id="inputName" class="form-control" placeholder="Name"
+                                       th:field="*{name}"
+                                       th:required="required"/>
+                                <label for="inputName">Name</label>
+                            </div>
+
+                            <div class="form-label-group">
+                                <input type="text" id="inputLastname" class="form-control"
+                                       placeholder="Lastname" th:field="*{lastname}" th:required="required"/>
+                                <label for="inputLastname">Lastname</label>
+
+                            </div>
+
+                            <div class="form-label-group">
+                                <input type="text" id="inputUsername" class="form-control"
+                                       placeholder="Username" th:field="*{username}" th:required="required"/>
+                                <label for="inputUsername">Username</label>
+                            </div>
+                            <div class="form-label-group">
+                                <input type="email" id="inputEmail" class="form-control" placeholder="Email address"
+                                       th:field="*{email}" th:required="required"/>
+                                <label for="inputEmail">Email address</label>
+                            </div>
+
+                            <div class="form-label-group">
+                                <input type="password" id="inputPassword" class="form-control" placeholder="Password"
+                                       th:field="*{password}" th:required="required"/>
+                                <label for="inputPassword">Password</label>
+                            </div>
+                            <div class="form-label-group">
+                                <input type="password" id="inputConfirmPassword" class="form-control"
+                                       placeholder="Confirm Password" th:required="required"/>
+                                <label for="inputConfirmPassword">Confirm password</label>
+                            </div>
+
+                            <button class="btn btn-lg btn-primary btn-block text-uppercase" id="submit-btn"
+                                    type="submit">Register
+                            </button>
+                            <a class="d-block text-center mt-2 small" href="/loggin">Sign In</a>
+                            <hr class="my-4"/>
+
+                            <span class="btn btn-lg btn-google btn-block text-uppercase"><i
+                                    class="fa fa-google" href="www.google.com"></i><a style="color: #FFFFFF"
+                                                                                      href="https://www.google.de/">Sign up with Google</a>
+                            </span>
+                            <span class="btn btn-lg btn-facebook btn-block text-uppercase"><i
+                                    class="fa fa-facebook"></i><a href="https://www.facebook.com"
+                                                                  style="color: #FFFFFF">Sign up with Facebook</a>
+                            </span>
+                            <!--                        <hr class="my-4"/>-->
+
+                            <!--                        <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i-->
+                            <!--                                class="fa fa-google"></i> Sign up with Google-->
+                            <!--                        </button>-->
+                            <!--                        <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i-->
+                            <!--                                class="fa fa-facebook"></i> Sign up with Facebook-->
+                            <!--                        </button>-->
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Start Footer -->
+<footer class="bd-footer text-muted">
+    <div class="container">
+        <ul class="bd-footer-links">
+            <li><a href="https://github.com/ychakr2s/WebAbschlussRepository">GitHub</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="/references">References</a></li>
+            <li><a href="/impressum">Imprint</a></li>
+        </ul>
+        <p>Entworfen und gebaut mit all der Liebe der Welt von @Yassine Chakri.</p>
+    </div>
+</footer>
+
+<script src="js/jquery-3.4.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+
+<script src="js/jquery.slim.min.js"></script>
+<script language="javascript" type="text/javascript">
+    //<![CDATA[
+
+    $(function () {
+        $(function () {
+            'use strict';
+            // HEADER: Adjust Slider Height
+            var windowHeigh = $(window).height();
+            $('.register').height(windowHeigh);
+        });
+
+    });
+
+    document.getElementById("submit-btn").addEventListener("click", function (event) {
+        var passp = document.getElementById("inputPassword").value;
+        var passRepeat = document.getElementById("inputConfirmPassword").value;
+        if (passp === passRepeat) {
+            console.log("sieh dir DB an: " + passp);
+        } else {
+            console.log("Leider Neinnnnnn ");
+            event.preventDefault()
+            alert("Sie haben daws Passwort falsch eingegeben");
+        }
+    });
+
+    $(function () {
+        'use strict';
+        // HEADER: Adjust Slider Height
+        var windowHeigh = $(window).height();
+        // var upperH = $('.upper-bar').innerHeight();
+        // var log = $('.loggin').innerHeight();
+        $('.loggin').height(windowHeigh);
+    });
+    // ++++++++++++++++++++++++++ End Change the Color if the link is clicked ++++++++++++++++++++++++++++++++++++++++++//
+
+    //]]>
+
+</script>
+<!--noch weiter-->
+
+</body>
+
+</html>

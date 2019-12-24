@@ -5,9 +5,10 @@ import com.YassineGroup.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -26,19 +27,19 @@ public class UserCotroller {
     @GetMapping("/")
     public String welcomeHome(Model model) {
         model.addAttribute("user", new User());
-        return "login";
+        return "index";
     }
 
     @GetMapping("/register")
     public String registerHome(Model model) {
         model.addAttribute("user", new User());
-        return "register";
+        return "registrieren";
     }
 
     @PostMapping("/register")
     public String formSubmit(@ModelAttribute("user") User user, Model modelAndView) {
 
-        User existingUser = userService.findUserByEmail(user.getEmail_Adresse());
+        User existingUser = userService.findUserByEmail(user.getEmail());
 
         if (existingUser != null) {
 
@@ -52,22 +53,37 @@ public class UserCotroller {
             modelAndView.addAttribute("register");
         }
 
-        System.out.println("Hello: " + user.getEmail_Adresse());
+        System.out.println("Hello: " + user.getEmail());
 
         return "register";
     }
 
+    @GetMapping("/loggin")
+    public String loginHome(Model model) {
+        model.addAttribute("user", new User());
+        return "loggin";
+    }
+
     @RequestMapping("/login-user")
-    public String loginUser(@ModelAttribute User user, HttpServletRequest request) {
-        if (userService.findByUsernameAndPassword(user.getEmail_Adresse(), user.getPassword()) != null) {
-            return "result";
+    public String loginUser(@ModelAttribute User user, HttpServletRequest request, Model model) {
+        System.out.println(user.getEmail() + " " + user.getPassword() + " " + user.getUsername());
+
+
+        User existingUser = userService.findUserByUsernameAndPassword(user.getUsername(), user.getPassword());
+
+        if (existingUser != null) {
+//            model.addAttribute("user", new User());
+            System.out.println("das ist falsch");
+            model.addAttribute("message", "Sie sind eingeloggt!");
+//            model.addAttribute("loggin");
+            return "mainIndex";
         } else {
-            request.setAttribute("error", "Invalid Username or Password");
-            request.setAttribute("mode", "MODE_LOGIN");
-            return "result";
+            model.addAttribute("message", "Invalid Username or Password! ");
+//            request.setAttribute("mode", "MODE_LOGIN");
+            System.out.println("Nein nLeider hejt nicht");
+            return "error";
         }
 
     }
-
 
 }
