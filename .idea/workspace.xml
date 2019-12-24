@@ -2,30 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fbf6da68-17e7-4215-a3d9-53cc6b21e176" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/welcome.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_login_Test.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/YassineGroup/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/YassineGroup/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/YassineGroup/controller/UserCotroller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/YassineGroup/controller/UserCotroller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/YassineGroup/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/YassineGroup/model/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/YassineGroup/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/YassineGroup/repository/UserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/YassineGroup/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/YassineGroup/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/YassineGroup/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/YassineGroup/Application.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/YassineGroup/controller/UserCotroller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/YassineGroup/controller/UserCotroller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/YassineGroup/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/YassineGroup/model/User.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/YassineGroup/repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/YassineGroup/repository/UserRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/YassineGroup/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/YassineGroup/service/UserService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/my_login_Test-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/my_login_Test-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/my_login_Test-1.0-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/my_login_Test-1.0-SNAPSHOT.jar.original" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -51,6 +37,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -71,6 +58,8 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="ExpandSpringBootJavaOptionsPanel" value="true" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelOrder2" value="2" />
@@ -81,7 +70,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../CRUD_SpringBoot" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -142,7 +131,8 @@
       <workItem from="1577095176420" duration="21658000" />
       <workItem from="1577134320041" duration="5618000" />
       <workItem from="1577140553479" duration="948000" />
-      <workItem from="1577141521296" duration="4125000" />
+      <workItem from="1577141521296" duration="4275000" />
+      <workItem from="1577181562983" duration="5064000" />
     </task>
     <servers />
   </component>

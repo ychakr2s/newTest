@@ -24,7 +24,13 @@ public class UserCotroller {
     }
 
     @GetMapping("/")
-    public String home(Model model) {
+    public String welcomeHome(Model model) {
+        model.addAttribute("user", new User());
+        return "login";
+    }
+
+    @GetMapping("/register")
+    public String registerHome(Model model) {
         model.addAttribute("user", new User());
         return "register";
     }
@@ -50,5 +56,18 @@ public class UserCotroller {
 
         return "register";
     }
+
+    @RequestMapping("/login-user")
+    public String loginUser(@ModelAttribute User user, HttpServletRequest request) {
+        if (userService.findByUsernameAndPassword(user.getEmail_Adresse(), user.getPassword()) != null) {
+            return "result";
+        } else {
+            request.setAttribute("error", "Invalid Username or Password");
+            request.setAttribute("mode", "MODE_LOGIN");
+            return "result";
+        }
+
+    }
+
 
 }
