@@ -14,17 +14,17 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
-    @Bean
-    public TomcatEmbeddedServletContainerFactory tomcatEmbedded() {
-        TomcatEmbeddedServletContainerFactory tomcat = new TomcatEmbeddedServletContainerFactory();
-
-        tomcat.addConnectorCustomizers((TomcatConnectorCustomizer) connector -> {
-            if ((connector.getProtocolHandler() instanceof AbstractHttp11Protocol<?>)) {
-                ((AbstractHttp11Protocol<?>) connector.getProtocolHandler()).setMaxSwallowSize(-1);
-            }
-        });
-
-        return tomcat;
-    }
+//    @Bean
+//    public TomcatEmbeddedServletContainerFactory tomcatEmbedded() {
+//        TomcatEmbeddedServletContainerFactory tomcat = new TomcatEmbeddedServletContainerFactory();
+//
+//        tomcat.addConnectorCustomizers((TomcatConnectorCustomizer) connector -> {
+//            if ((connector.getProtocolHandler() instanceof AbstractHttp11Protocol<?>)) {
+//                ((AbstractHttp11Protocol<?>) connector.getProtocolHandler()).setMaxSwallowSize(-1);
+//            }
+//        });
+//
+//        return tomcat;
+//    }
 
 }

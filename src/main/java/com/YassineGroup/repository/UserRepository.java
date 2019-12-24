@@ -2,10 +2,10 @@ package com.YassineGroup.repository;
 
 import com.YassineGroup.model.User;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-public interface UserRepository extends CrudRepository {
+@Repository("userRepository")
+public interface UserRepository extends CrudRepository<User, String> {
 
-    User findByEmail(String lastname);
-
-    User findById(Long id);
+    User findByEmail(String email);
 }
