@@ -1,5 +1,6 @@
 package com.YassineGroup.controller;
 
+import com.YassineGroup.model.Fahrt;
 import com.YassineGroup.model.User;
 import com.YassineGroup.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashSet;
+import java.util.Set;
 
 @Controller
 public class UserCotroller {
@@ -68,22 +71,50 @@ public class UserCotroller {
     public String loginUser(@ModelAttribute User user, HttpServletRequest request, Model model) {
         System.out.println(user.getEmail() + " " + user.getPassword() + " " + user.getUsername());
 
-
         User existingUser = userService.findUserByUsernameAndPassword(user.getUsername(), user.getPassword());
 
         if (existingUser != null) {
-//            model.addAttribute("user", new User());
             System.out.println("das ist falsch");
             model.addAttribute("message", "Sie sind eingeloggt!");
-//            model.addAttribute("loggin");
             return "mainIndex";
         } else {
             model.addAttribute("message", "Invalid Username or Password! ");
-//            request.setAttribute("mode", "MODE_LOGIN");
             System.out.println("Nein nLeider hejt nicht");
             return "error";
         }
-
     }
+
+    @GetMapping("/fahrtt")
+    public String testfahrt(Model model) {
+//        model.addAttribute("user", new User());
+        Set<Fahrt> fahr = new HashSet<Fahrt>();
+
+        User user = new User("name", "lastname", "username", "yassine@yahoo.de", "password");
+//        ( "name",  "lastname",  "username",  "email_Adresse",  "password")
+
+// Create Comments
+        Fahrt fahrt = new Fahrt("fromt", "tot", "dateez", 25, "placte", user);
+        fahr.add(fahrt);
+        user.setFahrt(fahr);
+        fahrt.setOneUser(user);
+
+        System.out.println(fahrt.toString());
+
+        System.out.println("Ich bin drin");
+        System.out.println(user.getFahrt().size());
+
+
+        user.getFahrt().add(fahrt);
+
+
+        System.out.println("Ich bin drin");
+
+        userService.saveUser(user);
+
+        System.out.println("Ich bin drin");
+
+        return "test";
+    }
+
 
 }

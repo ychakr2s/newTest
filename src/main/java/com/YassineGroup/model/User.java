@@ -1,22 +1,26 @@
 package com.YassineGroup.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "user")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private String lastname;
-
-
     private String username;
 
     @Column(name = "email")
     private String email;
     private String password;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "fahrtId")
+    private Set<Fahrt> fahrt;
 
     public User() {
     }
@@ -78,6 +82,16 @@ public class User {
         this.password = password;
     }
 
+    public Set<Fahrt> getFahrt() {
+        return fahrt;
+    }
 
+    public void setFahrt(Set<Fahrt> fahrt) {
+        this.fahrt = fahrt;
+    }
+
+    public String toString() {
+        return getFahrt().toString();
+    }
 }
 
