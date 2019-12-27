@@ -9,11 +9,11 @@ public class Fahrt {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long Id;
-    String fromm;
-    String too;
-    String datee;
-    double pricee;
-    String placee;
+    private String depart;
+    private String target;
+    private String dates;
+    private double prices;
+    private String places;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "userId")
@@ -22,12 +22,12 @@ public class Fahrt {
     public Fahrt() {
     }
 
-    public Fahrt(String from, String to, String datee, double price, String placee, User oneUser) {
-        this.fromm = from;
-        this.too = to;
-        this.datee = datee;
-        this.pricee = price;
-        this.placee = placee;
+    public Fahrt(String depart, String target, String dates, double prices, String places, User oneUser) {
+        this.depart = depart;
+        this.target = target;
+        this.dates = dates;
+        this.prices = prices;
+        this.places = places;
         this.oneUser = oneUser;
     }
 
@@ -39,44 +39,44 @@ public class Fahrt {
         Id = id;
     }
 
-    public String getFromm() {
-        return fromm;
+    public String getDepart() {
+        return depart;
     }
 
-    public void setFromm(String from) {
-        this.fromm = from;
+    public void setDepart(String from) {
+        this.depart = from;
     }
 
-    public String getToo() {
-        return too;
+    public String getTarget() {
+        return target;
     }
 
-    public void setToo(String to) {
-        this.too = to;
+    public void setTarget(String target) {
+        this.target = target;
     }
 
-    public String getDatee() {
-        return datee;
+    public String getDates() {
+        return dates;
     }
 
-    public void setDatee(String date) {
-        this.datee = date;
+    public void setDates(String date) {
+        this.dates = date;
     }
 
-    public double getPricee() {
-        return pricee;
+    public double getPrices() {
+        return prices;
     }
 
-    public void setPricee(double price) {
-        this.pricee = price;
+    public void setPrices(double prices) {
+        this.prices = prices;
     }
 
-    public String getPlacee() {
-        return placee;
+    public String getPlaces() {
+        return places;
     }
 
-    public void setPlacee(String place) {
-        this.placee = place;
+    public void setPlaces(String place) {
+        this.places = place;
     }
 
     public User getOneUser() {
@@ -88,7 +88,7 @@ public class Fahrt {
     }
 
     public String toString() {
-        return getOneUser().getUsername() + " und " + getOneUser().getEmail();
+        return getDepart() + "  " + getTarget() + " " + getDates() + " " + getPrices();
     }
 
 }
