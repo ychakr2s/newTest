@@ -58,6 +58,8 @@
                         <h5 class="card-title text-center">Register</h5>
 
                         <form class="form-signin" action="#" th:action="@{/register}" th:object="${user}" method="post">
+                            <!--                            <input type="hidden" name="id" value="${user.id}"/>-->
+                            <input type="hidden" name="user.id" value="${user.id}"/>
 
                             <div class="form-label-group">
                                 <input type="text" id="inputName" class="form-control" placeholder="Name"

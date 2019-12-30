@@ -5,7 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface FahrtRepository extends CrudRepository<Fahrt, String> {
+public interface FahrtRepository extends CrudRepository<Fahrt, Long> {
 
 //    Fahrt findByPlace(String place);
 }

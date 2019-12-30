@@ -1,6 +1,7 @@
 package com.YassineGroup.model;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 
 @Entity
 @Table(name = "fahrt")
@@ -17,18 +18,19 @@ public class Fahrt {
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "userId")
-    private User oneUser;
+    @Valid
+    private User user;
 
     public Fahrt() {
     }
 
-    public Fahrt(String depart, String target, String dates, double prices, String places, User oneUser) {
+    public Fahrt(String depart, String target, String dates, double prices, String places, User user) {
         this.depart = depart;
         this.target = target;
         this.dates = dates;
         this.prices = prices;
         this.places = places;
-        this.oneUser = oneUser;
+        this.user = user;
     }
 
     public Long getId() {
@@ -79,12 +81,12 @@ public class Fahrt {
         this.places = place;
     }
 
-    public User getOneUser() {
-        return oneUser;
+    public User getUser() {
+        return user;
     }
 
-    public void setOneUser(User user) {
-        this.oneUser = user;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String toString() {

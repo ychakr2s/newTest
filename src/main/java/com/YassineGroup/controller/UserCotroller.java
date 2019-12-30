@@ -2,7 +2,6 @@ package com.YassineGroup.controller;
 
 import com.YassineGroup.model.Fahrt;
 import com.YassineGroup.model.User;
-import com.YassineGroup.service.FahrtService;
 import com.YassineGroup.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -55,7 +54,7 @@ public class UserCotroller {
             System.out.println("schon hier");
         } else {
             userService.saveUser(user);
-            modelAndView.addAttribute("message", "Sie haben sich erfolgreich registriert ");
+            modelAndView.addAttribute("message", "Sie haben sich erfolgreich registriert");
             modelAndView.addAttribute("register");
         }
 
@@ -90,10 +89,9 @@ public class UserCotroller {
     @GetMapping("/fahrtt")
     public String testfahrt(Model model) {
 
-        User user = new User("name", "lastname", "username", "yassine@yahoo.de", "password");
+        User user = new User("name","lastname","username","yassine@yahoo.de","password");
 
         Set<Fahrt> fahr = new HashSet<Fahrt>();
-
 
 // Create Comments
         Fahrt fahrt = new Fahrt("fromt", "tot", "dateez", 25, "placte", user);
@@ -102,16 +100,14 @@ public class UserCotroller {
         fahr.add(fahrt);
         fahr.add(fahrt1);
         user.setFahrt(fahr);
-        fahrt.setOneUser(user);
+        fahrt.setUser(user);
 
         System.out.println(fahrt.toString());
 
         System.out.println("Ich bin drin");
         System.out.println(user.getFahrt().size());
 
-
         user.getFahrt().add(fahrt);
-
 
         System.out.println("Ich bin drin");
 
@@ -137,23 +133,27 @@ public class UserCotroller {
 //    }
 
     @PostMapping("/addFahrt")
-    public String addFahr(@ModelAttribute("user") User user, Model modelAndView) {
+    public String addFahr(@ModelAttribute("fahrt") Fahrt fahrt, Model modelAndView) {
+        Set<Fahrt> fahr = new HashSet<Fahrt>();
+        fahr.add(fahrt);
+        fahrt.getUser().setFahrt(fahr);
+        System.out.println("alles ist Richtig");
 
-        User existingUser = userService.findUserByEmail(user.getEmail());
-
-        if (existingUser != null) {
-
-            modelAndView.addAttribute("message", "This email already exists!");
-            modelAndView.addAttribute("register");
-
-            System.out.println("schon hier");
-        } else {
-            userService.saveUser(user);
-            modelAndView.addAttribute("message", "Sie haben sich erfolgreich registriert ");
-            modelAndView.addAttribute("register");
-        }
-
-        System.out.println("Hello: " + user.getEmail());
+//        User existingUser = userService.findUserByEmail(user.getEmail());
+//
+//        if (existingUser != null) {
+//
+//            modelAndView.addAttribute("message", "This email already exists!");
+//            modelAndView.addAttribute("register");
+//
+//            System.out.println("schon hier");
+//        } else {
+//            userService.saveUser(user);
+//            modelAndView.addAttribute("message", "Sie haben sich erfolgreich registriert ");
+//            modelAndView.addAttribute("register");
+//        }
+//
+//        System.out.println("Hello: " + user.getEmail());
 
         return "register";
     }
