@@ -7,24 +7,29 @@ import com.YassineGroup.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.config.ResourceNotFoundException;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.*;
 
+@Service
+@Transactional
 public class FahrtService {
 
     private FahrtRepository fahrtRepository;
+
     private UserRepository userRepository;
 
     @Autowired
-    public FahrtService(@Qualifier("userRepository") FahrtRepository fahrtRepository) {
+    public FahrtService(@Qualifier("fahrtRepository") FahrtRepository fahrtRepository) {
         this.fahrtRepository = fahrtRepository;
     }
 
-    public void saveUser(Fahrt fahrt) {
-        fahrtRepository.save(fahrt);
+    public Fahrt saveFahrt(Fahrt fahrt) {
+        return fahrtRepository.save(fahrt);
     }
 
-    public Fahrt createFahrt(Long userId, Fahrt fahrt) throws ResourceNotFoundException {
+    public Fahrt createFahrt(int userId, Fahrt fahrt) throws ResourceNotFoundException {
 
         Set<Fahrt> fahrts = new HashSet<>();
         User user1 = new User();

@@ -34,5 +34,13 @@ public class UserService {
         return userRepository.findByUsernameAndPassword(username, password);
     }
 
+    public User findUserById(int id) {
+        return userRepository.findById(id);
+    }
+
+    public Integer findUserIdByUsernameAndPassword(String username, String password) {
+        return userRepository.findIdByUsernameAndPassword(username, password);
+    }
+
 
 }

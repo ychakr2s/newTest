@@ -4,8 +4,11 @@ import com.YassineGroup.model.Fahrt;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public interface FahrtRepository extends CrudRepository<Fahrt, Long> {
+@Repository("fahrtRepository")
+public interface FahrtRepository extends CrudRepository<Fahrt, Integer> {
 
 //    Fahrt findByPlace(String place);
+//    public void saveF(Fahrt fahrt);
+
+
 }

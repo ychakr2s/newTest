@@ -49,12 +49,13 @@
                         <!--                            </div>-->
                         <!--                        </form>-->
 
-                        /*@thymesVar id="user" type="user"*/
                         <form class="form-signin" action="#" th:action="@{/createFahrt}" th:object="${fahrt} "
                               method="post">
                             <!--                                                        <input type="hidden" name="id" value="${user.id}"/>-->
-                            <input type="hidden" name="user.id" value="${fahrt.user.id}"/>
+                            <!--                            <input type="hidden" name="user.id" value="${user.id}"/>-->
                             <!--                            <input type="hidden" th:field="*{id}"/>-->
+                            <input type="hidden" name="id" value="${fahrt.id}"/>
+
 
                             <div class="form-label-group">
                                 <input type="text" id="inputName" class="form-control" placeholder="Name"

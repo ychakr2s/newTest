@@ -5,12 +5,14 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository("userRepository")
-public interface UserRepository extends CrudRepository<User, Long> {
+public interface UserRepository extends CrudRepository<User, Integer> {
 
     User findByEmail(String email);
 
     User findByUsernameAndPassword(String username, String password);
 
-    User findById(Long userId);
+    User findById(int userId);
+
+    Integer findIdByUsernameAndPassword(String username, String password);
 
 }

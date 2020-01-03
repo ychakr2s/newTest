@@ -20,6 +20,8 @@ public class FahrtController {
     @Autowired
     private FahrtRepository fahrtRepository;
     private FahrtService fahrtService;
+
+    int id;
 //    @Autowired
 //    private CommentRepository commentRepository;
 
@@ -32,7 +34,7 @@ public class FahrtController {
 //                                @Valid @RequestBody Fahrt fahrt) {
 
     @PostMapping("/{userId}/fahrt")
-    public String createFahrt(@RequestParam(value = "userId") Long userId, @ModelAttribute("fahrt") Fahrt fahrt) {
+    public String createFahrt(@RequestParam(value = "userId") int userId, @ModelAttribute("fahrt") Fahrt fahrt) {
 
         System.out.println("Bruder ich bin drin");
 
@@ -58,20 +60,37 @@ public class FahrtController {
 
     //Book
 //    <input type="hidden" th:field="*{id}"/>
-    @PostMapping(value = "/createFahrt")
-    public String createBook(@Valid @ModelAttribute("fahrt") Fahrt fahrt, BindingResult result, Model model) {
-        System.out.println("nocht nicht executed");
-        Long userId = fahrt.getUser().getId();
-//        int a = Math.toIntExact(userId);
-//        System.out.println(a+ " hier");
-        System.out.println("doch is id executed");
-        System.out.println(userId);
-        System.out.println("doch is id executed");
 
-        fahrtService.createFahrt(userId, fahrt);
-        System.out.println("nocht schon executed");
-        return "index";
-    }
+
+
+
+//    @PostMapping(value = "/createFahrt")
+//    public String createBook(@Valid @ModelAttribute("fahrt") Fahrt fahrt, BindingResult result, Model model) {
+//        System.out.println("nocht nicht executed is: " + fahrt.getDepart());
+////        Long userId = fahrt.getUser().getId();
+////        int a = Math.toIntExact(userId);
+////        System.out.println(a+ " hier");
+//
+//        Set<Fahrt> fahr = new HashSet<Fahrt>();
+////        Fahrt fahrt1 = new Fahrt("from", "to", "datee", 25, "plact", user);
+//
+//        fahr.add(fahrt);
+//        System.out.println("nocht  executed is: " + fahrt.getDepart());
+//        fahrt.getUser().setFahrt(fahr);
+//        fahrtRepository.save(fahrt);
+//
+////        fahr.add(fahrt1);
+////        user.setFahrt(fahr);
+////        fahrt.setUser(user);
+//
+//        System.out.println("doch is id executed");
+////        System.out.println(userId);
+//        System.out.println("doch is id executed");
+//
+////        fahrtService.createFahrt(userId, fahrt);
+//        System.out.println("nocht schon executed");
+//        return "index";
+//    }
 
 
 //    @GetMapping("/fahrts")

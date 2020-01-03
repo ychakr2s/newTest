@@ -17,7 +17,7 @@ public class Fahrt {
     private String places;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "userId")
+    @JoinColumn(name = "userId", nullable = false)
     @Valid
     private User user;
 
