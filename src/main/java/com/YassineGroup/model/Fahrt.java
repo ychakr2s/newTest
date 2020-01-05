@@ -5,11 +5,12 @@ import javax.validation.Valid;
 
 @Entity
 @Table(name = "fahrt")
-public class Fahrt {
+public class Fahrt implements Comparable<Fahrt> {
+//        implements Comparator<Fahrt> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Long Id;
+    int Id;
     private String depart;
     private String target;
     private String dates;
@@ -33,11 +34,11 @@ public class Fahrt {
         this.user = user;
     }
 
-    public Long getId() {
+    public int getId() {
         return Id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         Id = id;
     }
 
@@ -90,7 +91,31 @@ public class Fahrt {
     }
 
     public String toString() {
-        return getDepart() + "  " + getTarget() + " " + getDates() + " " + getPrices();
+        return getDepart() + "  " + getTarget() + " " + getDates() + " " + getPrices() + " " + getPlaces();
     }
 
+    @Override
+    public int compareTo(Fahrt o) {
+        return (this.getId() - o.getId());
+    }
+
+
+//    @Override
+//    public int compareTo(Fahrt f1, Fahrt f2) {
+//
+//        return 0;
+//    }
+
+//    @Override
+//    public int compare(Fahrt o1, Fahrt o2) {
+//        int v1 = o1.getId();
+//        int v2 = o2.getId();
+//        if(v1.){
+//
+//        }
+////        if(v1.com)
+////        if ((v1.compareTo(v2)) >0) return 1;
+////        else return 0;
+//        return 0;
+//    }
 }

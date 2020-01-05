@@ -6,17 +6,18 @@ import com.YassineGroup.repository.UserRepository;
 import com.YassineGroup.service.FahrtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
 import java.util.HashSet;
 import java.util.Set;
 
 @RestController
 public class FahrtController {
 
+    @Qualifier("fahrtRepository")
     @Autowired
     private FahrtRepository fahrtRepository;
     private FahrtService fahrtService;
@@ -25,43 +26,41 @@ public class FahrtController {
 //    @Autowired
 //    private CommentRepository commentRepository;
 
-    @Autowired
-    @Qualifier(value = "userRepository")
-    private UserRepository userRepository;
-
-//    @PostMapping("/createFahrt")
-//    public String createComment(@PathVariable(value = "userId") Long userId,
-//                                @Valid @RequestBody Fahrt fahrt) {
-
-    @PostMapping("/{userId}/fahrt")
-    public String createFahrt(@RequestParam(value = "userId") int userId, @ModelAttribute("fahrt") Fahrt fahrt) {
-
-        System.out.println("Bruder ich bin drin");
-
-        Set<Fahrt> fahr = new HashSet<Fahrt>();
-        fahr.add(fahrt);
-        System.out.println("Bruder fahrt ist hinzugefügt");
-
-        userRepository.findById(userId).setFahrt(fahr);
-        fahrtRepository.save(fahrt);
-
-
-//        fahrt.getOneUser().setFahrt(fahr);
-        System.out.println("Bruder alles ist Richtig");
-
-
-//        return postRepository.findById(postId).map(post -> {
-//            comment.setPost(post);
-//            return commentRepository.save(comment);
-//        }).orElseThrow(() -> new ResourceNotFoundException("PostId " + postId + " not found"));
-
-        return "index";
-    }
+//    @Autowired
+//    @Qualifier(value = "userRepository")
+//    private UserRepository userRepository;
+//
+////    @PostMapping("/createFahrt")
+////    public String createComment(@PathVariable(value = "userId") Long userId,
+////                                @Valid @RequestBody Fahrt fahrt) {
+//
+//    @PostMapping("/{userId}/fahrt")
+//    public String createFahrt(@RequestParam(value = "userId") int userId, @ModelAttribute("fahrt") Fahrt fahrt) {
+//
+//        System.out.println("Bruder ich bin drin");
+//
+//        Set<Fahrt> fahr = new HashSet<Fahrt>();
+//        fahr.add(fahrt);
+//        System.out.println("Bruder fahrt ist hinzugefügt");
+//
+//        userRepository.findById(userId).setFahrt(fahr);
+//        fahrtRepository.save(fahrt);
+//
+//
+////        fahrt.getOneUser().setFahrt(fahr);
+//        System.out.println("Bruder alles ist Richtig");
+//
+//
+////        return postRepository.findById(postId).map(post -> {
+////            comment.setPost(post);
+////            return commentRepository.save(comment);
+////        }).orElseThrow(() -> new ResourceNotFoundException("PostId " + postId + " not found"));
+//
+//        return "index";
+//    }
 
     //Book
 //    <input type="hidden" th:field="*{id}"/>
-
-
 
 
 //    @PostMapping(value = "/createFahrt")

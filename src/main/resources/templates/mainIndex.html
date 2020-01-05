@@ -59,7 +59,7 @@
             </span>
 
         <span type="button" class="btn btn-info">
-               <i class="fa fa-eye" aria-hidden="true"></i> alle Fahrts anzeigen
+               <i class="fa fa-eye" aria-hidden="true"></i> <a href="/display_Fahrt"> alle Fahrts anzeigen </a>
         </span>
         <hr/>
 
@@ -79,9 +79,29 @@
                     <th>Wann</th>
                     <th>Preis</th>
                     <th>Plätze</th>
+                    <th>Delete</th>
+                    <th>Edit</th>
                     <!--                    <th>Edit</th>-->
                 </tr>
                 </thead>
+                <tbody>
+                <tr th:each="fahrt : ${fahrts}">
+                    <!--                <tr>-->
+                    <td th:text="${fahrt.id}"></td>
+                    <td th:text="${fahrt.depart}"></td>
+                    <td th:text="${fahrt.target}"></td>
+                    <td th:text="${fahrt.dates}"></td>
+                    <td th:text="${fahrt.prices}"></td>
+                    <td th:text="${fahrt.places}"></td>
+
+                    <td><a href="/delete-fahrt?id= ${fahrt.id}">
+                        <span class="glyphicon glyphicon-trash"></span></a>
+                    </td>
+                    <!--                    <td><a href="/edit-fahrt?id= ${fahrt.id}">-->
+                    <!--                        <span class="ghlypicon glyphicon-pencil"></span></a>-->
+                    <!--                    </td>-->
+                </tr>
+                </tbody>
             </table>
         </div>
     </div>

@@ -11,15 +11,13 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 @Controller
 public class UserCotroller {
@@ -36,7 +34,7 @@ public class UserCotroller {
     FahrtRepository fahrtRepository;
     UserRepository userRepository;
 
-    private int id;
+    private int userId;
     //    @Autowired
 //    private FahrtService fahrtService;
 
@@ -95,8 +93,8 @@ public class UserCotroller {
         if (existingUser != null) {
 //            System.out.println("der id ist: " + userService.findUserIdByUsernameAndPassword(user.getUsername(), user.getPassword()));
 //            System.out.println("das ist richtig " + userService.findUserById(1).getName());
-            id = existingUser.getId();
-            System.out.println("my Id " + id);
+            userId = existingUser.getId();
+            System.out.println("my Id " + userId);
             model.addAttribute("message", "Sie sind eingeloggt!");
             return "mainIndex";
         } else {
@@ -155,7 +153,7 @@ public class UserCotroller {
     @PostMapping("/addFahrt")
     public String addFahr(@ModelAttribute("fahrt") Fahrt fahrt, Model modelAndView) {
 //        postRepository.findById(postId).map(post -> { comment.setPost(post); return commentRepository.save(comment);
-        User user = userRepository.findById(id);
+        User user = userRepository.findById(userId);
         fahrt.setUser(user);
         Set<Fahrt> fahr = new HashSet<Fahrt>();
         fahr.add(fahrt);
@@ -220,13 +218,13 @@ public class UserCotroller {
     }
 
     @PostMapping(value = "/createFahrt")
-    public void createFahrt(@Valid @ModelAttribute("fahrt") Fahrt fahrt, BindingResult result, Model model) {
+    public String createFahrt(@Valid @ModelAttribute("fahrt") Fahrt fahrt, BindingResult result, Model modelAndView) {
         System.out.println("nocht nicht executed is: " + fahrt.getDepart());
 //        Long userId = fahrt.getUser().getId();
 //        int a = Math.toIntExact(userId);
 //        System.out.println(a+ " hier");
-        System.out.println("Create Fahrt : " + id);
-        User user = userService.findUserById(id);
+        System.out.println("Create Fahrt : " + userId);
+        User user = userService.findUserById(userId);
         System.out.println("nocht nicht executed is: " + fahrt.getDepart());
 
 //        fahrt.setUser(user);
@@ -250,6 +248,9 @@ public class UserCotroller {
 
 //        fahr.
 //        fahrtService.saveFahrt(fahrt);
+        modelAndView.addAttribute("message", "Yeh.. you saved the Fahrt!!");
+        modelAndView.addAttribute("register");
+
 /*
         fahrtRepository.save(fahr);
         user.setFahrt(fahr);
@@ -270,7 +271,65 @@ public class UserCotroller {
 
 
 //        return "index";
+        return "mainIndex";
     }
+
+    @GetMapping(value = "/display_Fahrt")
+    public String displayFahrt(@ModelAttribute("fahrt") Fahrt fahrt, Model modelAndView) {
+        System.out.println("Ich bin drin in dispay");
+        User user = userService.findUserById(userId);
+        System.out.println("Richtig " + user.getName());
+        System.out.println(user.getFahrt() + " ; " + fahrtService.showUsersFahrts(userId));
+
+        HashSet<Fahrt> fahrts = new HashSet<Fahrt>();
+        fahrts = fahrtService.showUsersFahrts(userId);
+        System.out.println(fahrts.iterator().next());
+
+        TreeSet myTreeSet = new TreeSet();
+        myTreeSet.addAll(fahrts);
+
+        modelAndView.addAttribute("fahrts", myTreeSet);
+
+        return "mainIndex";
+    }
+
+    @RequestMapping("/delete-user")
+    public String deleteUser(@RequestParam int id, Model modelAndView) {
+//        if (fa.existUser(id)) {
+        System.out.println("ich bin in delete");
+        Fahrt fahrt = fahrtService.findFahrtById(id);
+        System.out.println("fahrt ist gefunden");
+
+        fahrtService.deleteFahrt(fahrt);
+//            userService.deleteMyUser(id);
+//        request.setAttribute("fahrts", fahrtService.);
+//        request.setAttribute("mode", "ALL_USERS");
+
+
+//        TreeSet myTreeSet = new TreeSet();
+//        myTreeSet.addAll(fahrtService.showUsersFahrts(userId));
+//
+//        modelAndView.addAttribute("fahrts", myTreeSet);
+
+        return "mainIndex";
+
+//        return "welcomepage";
+//    } else
+//
+//    {
+//        request.setAttribute("error", "Invalid Username or Password");
+//        request.setAttribute("mode", "ALL_USERS");
+//        return "welcomepage";
+//    }
+
+    }
+
+//    @RequestMapping("/edit-user")
+//    public String editUser(@RequestParam int id, HttpServletRequest request) {
+//        request.setAttribute("user", userService.editUser(id));
+//        request.setAttribute("mode", "MODE_UPDATE");
+//        return "welcomepage";
+//    }
 
 
 }
