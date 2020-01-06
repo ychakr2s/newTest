@@ -59,7 +59,7 @@
             </span>
 
         <span type="button" class="btn btn-info">
-               <i class="fa fa-eye" aria-hidden="true"></i> <a href="/display_Fahrt"> alle Fahrts anzeigen </a>
+               <i class="fa fa-eye" aria-hidden="true"></i> <a href="/display_Fahrt" style="color: #ffffff;"> alle Fahrts anzeigen </a>
         </span>
         <hr/>
 
@@ -80,7 +80,7 @@
                     <th>Preis</th>
                     <th>Plätze</th>
                     <th>Delete</th>
-                    <th>Edit</th>
+                    <th>Edit <span class="glyphicon glyphicon-edit"></span></th>
                     <!--                    <th>Edit</th>-->
                 </tr>
                 </thead>
@@ -93,13 +93,18 @@
                     <td th:text="${fahrt.dates}"></td>
                     <td th:text="${fahrt.prices}"></td>
                     <td th:text="${fahrt.places}"></td>
-
-                    <td><a href="/delete-fahrt?id= ${fahrt.id}">
-                        <span class="glyphicon glyphicon-trash"></span></a>
-                    </td>
-                    <!--                    <td><a href="/edit-fahrt?id= ${fahrt.id}">-->
-                    <!--                        <span class="ghlypicon glyphicon-pencil"></span></a>-->
+                    <!--                    delete-fahrt-->
+                    <!--                    <td><a href="/delete-fahrt?id=${fahrt.id}">-->
+                    <!--                        <span class="glyphicon glyphicon-edit"></span></a>-->
                     <!--                    </td>-->
+                    <td><a th:href="@{/delete/{id}(id=${fahrt.id})}"> <i class="fa fa-trash-o fa-lg"></i>
+
+                    </a></td>
+                    <td>
+                        <a href="@{/edit-fahrt/{id}(id=${fahrt.id})}">
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </a>
+                    </td>
                 </tr>
                 </tbody>
             </table>

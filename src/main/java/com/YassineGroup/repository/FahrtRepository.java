@@ -1,7 +1,9 @@
 package com.YassineGroup.repository;
 
 import com.YassineGroup.model.Fahrt;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashSet;
@@ -13,9 +15,16 @@ public interface FahrtRepository extends CrudRepository<Fahrt, Integer> {
 
     HashSet<Fahrt> findFahrtByUserId(int id);
 
-    Fahrt findById(int id);
+//    Fahrt findById(int id);
 
-    public void delete(Fahrt fahrt);
+//    public void delete(Fahrt fahrt);
+
+    public void delete(int fahrtId);
+
+//    @Query(value = "SELECT u FROM User u WHERE u.name IN :names")
+//    void delete(@Param("names") Collection<String> names);
+
+//    public Fahrt findByIdAndFahrtId(int fahrtId, int userId);
 
 
 //    Fahrt findByPlace(String place);

@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashSet;
 import java.util.Set;
 
-@RestController
+//@RestController
 public class FahrtController {
 
-    @Qualifier("fahrtRepository")
-    @Autowired
+//    @Qualifier("fahrtRepository")
+//    @Autowired
     private FahrtRepository fahrtRepository;
     private FahrtService fahrtService;
 

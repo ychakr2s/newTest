@@ -18,7 +18,7 @@ public class User {
     private String email;
     private String password;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JoinColumn(name = "fahrtId")
     private Set<Fahrt> fahrt;
 
@@ -88,6 +88,11 @@ public class User {
 
     public void setFahrt(Set<Fahrt> fahrt) {
         this.fahrt = fahrt;
+    }
+
+    public void removeFahrt(Fahrt fahrtt) {
+        fahrt.remove(fahrt);
+        fahrtt.setFa
     }
 
     public String toString() {

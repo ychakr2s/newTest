@@ -17,7 +17,7 @@ public class Fahrt implements Comparable<Fahrt> {
     private double prices;
     private String places;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "userId", nullable = false)
     @Valid
     private User user;

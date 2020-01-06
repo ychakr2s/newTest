@@ -19,6 +19,8 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
+//import org.springframework.data.jpa.repository.Query;
+
 @Controller
 public class UserCotroller {
 
@@ -293,35 +295,27 @@ public class UserCotroller {
         return "mainIndex";
     }
 
-    @RequestMapping("/delete-user")
-    public String deleteUser(@RequestParam int id, Model modelAndView) {
+    @GetMapping("/delete/{id}")
+    public String deleteFahrt(@PathVariable("id") int id, Model modelAndView) {
 //        if (fa.existUser(id)) {
-        System.out.println("ich bin in delete");
+        System.out.println("heyyy  guck mal ..... ich bin in delete : " + id);
         Fahrt fahrt = fahrtService.findFahrtById(id);
         System.out.println("fahrt ist gefunden");
 
-        fahrtService.deleteFahrt(fahrt);
-//            userService.deleteMyUser(id);
-//        request.setAttribute("fahrts", fahrtService.);
-//        request.setAttribute("mode", "ALL_USERS");
+//        EntityManager entityManager = HibernateOperations.getEntityManager();
 
 
-//        TreeSet myTreeSet = new TreeSet();
-//        myTreeSet.addAll(fahrtService.showUsersFahrts(userId));
-//
-//        modelAndView.addAttribute("fahrts", myTreeSet);
+        fahrtService.deleteFahrt(id);
+
+
+        System.out.println("fahrt ist geloescht");
+
+        TreeSet myTreeSet = new TreeSet();
+        myTreeSet.addAll(fahrtService.showUsersFahrts(userId));
+
+        modelAndView.addAttribute("fahrts", myTreeSet);
 
         return "mainIndex";
-
-//        return "welcomepage";
-//    } else
-//
-//    {
-//        request.setAttribute("error", "Invalid Username or Password");
-//        request.setAttribute("mode", "ALL_USERS");
-//        return "welcomepage";
-//    }
-
     }
 
 //    @RequestMapping("/edit-user")

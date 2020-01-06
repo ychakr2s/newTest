@@ -29,16 +29,20 @@ public class FahrtService {
 //        userRepository.deleteById(id);
 //    }
     public Fahrt findFahrtById(int id) {
-        return fahrtRepository.findById(id);
+        return fahrtRepository.findOne(id);
     }
 
-    public void deleteFahrt(Fahrt fahrt) {
-        this.fahrtRepository.delete(fahrt);
+    public void deleteFahrt(int fahrtId) {
+        this.fahrtRepository.delete(fahrtId);
     }
 
     public Fahrt saveFahrt(Fahrt fahrt) {
         return fahrtRepository.save(fahrt);
     }
+
+//    public Fahrt findFahrtByIdAndFahrtId(int fahrtId, int userId) {
+//        return fahrtRepository.findByIdAndFahrtId(fahrtId, userId);
+//    }
 
     //    public Fahrt createFahrt(int userId, Fahrt fahrt) throws ResourceNotFoundException {
 //
