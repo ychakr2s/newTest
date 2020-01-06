@@ -67,7 +67,7 @@ public class FahrtService {
     public HashSet<Fahrt> showUsersFahrts(int id) {
 //        User user = userService.findUserById(id);
         System.out.println("Richtig drin in usersfahrts ");
-        Set<Fahrt> fahrts = new HashSet<Fahrt>();
+        HashSet<Fahrt> fahrts = new HashSet<Fahrt>();
 //        fahrts = user.getFahrt();
         fahrts = fahrtRepository.findFahrtByUserId(id);
 
@@ -77,7 +77,7 @@ public class FahrtService {
 //            fahrts.add(fahrt);
 //        }
 
-        return (HashSet<Fahrt>) fahrts;
+        return fahrts;
     }
 
 

@@ -1,6 +1,7 @@
 package com.YassineGroup.repository;
 
 import com.YassineGroup.model.Fahrt;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.HashSet;
 
 @Repository("fahrtRepository")
-public interface FahrtRepository extends CrudRepository<Fahrt, Integer> {
+public interface FahrtRepository extends JpaRepository<Fahrt, Integer> {
 
 //    Page<Comment> findByPostId(Long postId, Pageable pageable);
 

@@ -1,6 +1,7 @@
 package com.YassineGroup.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -18,9 +19,8 @@ public class User {
     private String email;
     private String password;
 
-    @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
-    @JoinColumn(name = "fahrtId")
-    private Set<Fahrt> fahrt;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    private Set<Fahrt> fahrt = new HashSet<>();
 
     public User() {
     }
@@ -90,10 +90,10 @@ public class User {
         this.fahrt = fahrt;
     }
 
-    public void removeFahrt(Fahrt fahrtt) {
-        fahrt.remove(fahrt);
-        fahrtt.setFa
-    }
+//    public void removeFahrt(Fahrt fahrtt) {
+//        fahrt.remove(fahrt);
+//        fahrtt.setFa
+//    }
 
     public String toString() {
         return getFahrt().toString();

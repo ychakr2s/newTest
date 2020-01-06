@@ -295,27 +295,35 @@ public class UserCotroller {
         return "mainIndex";
     }
 
-    @GetMapping("/delete/{id}")
-    public String deleteFahrt(@PathVariable("id") int id, Model modelAndView) {
+    @GetMapping("/delete-fahrt/{id}")
+    public String deleteFahrt(@PathVariable("id") int id) {
 //        if (fa.existUser(id)) {
         System.out.println("heyyy  guck mal ..... ich bin in delete : " + id);
-        Fahrt fahrt = fahrtService.findFahrtById(id);
+//        Fahrt fahrt = fahrtService.findFahrtById(id);
         System.out.println("fahrt ist gefunden");
-
-//        EntityManager entityManager = HibernateOperations.getEntityManager();
-
 
         fahrtService.deleteFahrt(id);
 
+        System.out.println("fahrt ist geloescht");
+        System.out.println("fahrt ist schon weg");
+
+        return "redirect:/display_Fahrt";
+    }
+
+
+    @GetMapping("/edit-fahrt/{id}")
+    public String editFahrt(@PathVariable("id") int id) {
+//        if (fa.existUser(id)) {
+        System.out.println("heyyy  guck mal ..... ich bin in edit : " + id);
+//        Fahrt fahrt = fahrtService.findFahrtById(id);
+        System.out.println("fahrt ist gefunden");
+
+        fahrtService.deleteFahrt(id);
 
         System.out.println("fahrt ist geloescht");
+        System.out.println("fahrt ist schon weg");
 
-        TreeSet myTreeSet = new TreeSet();
-        myTreeSet.addAll(fahrtService.showUsersFahrts(userId));
-
-        modelAndView.addAttribute("fahrts", myTreeSet);
-
-        return "mainIndex";
+        return "redirect:/display_Fahrt";
     }
 
 //    @RequestMapping("/edit-user")
