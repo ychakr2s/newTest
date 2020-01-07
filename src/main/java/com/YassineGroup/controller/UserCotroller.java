@@ -307,6 +307,7 @@ public class UserCotroller {
         System.out.println("fahrt ist schon weg");
 
         return "redirect:/display_Fahrt";
+//        return  "update-fahrt.html";
     }
 
     @GetMapping("/edit-fahrt/{id}")
@@ -324,8 +325,8 @@ public class UserCotroller {
 
         System.out.println("fahrt ist geloescht");
         System.out.println("fahrt ist schon weg");
-
-        return "redirect:/showFahrt";
+        return "update_fahrt";
+//        return "redirect:/showFahrt";
     }
 
 
@@ -336,5 +337,17 @@ public class UserCotroller {
 //        return "welcomepage";
 //    }
 
+    @PostMapping("/update/{id}")
+    public String updateUser(@PathVariable("id") int id, @Valid Fahrt fahrt,
+                             BindingResult result, Model model) {
+//        if (result.hasErrors()) {
+//            fahrt.setId(id);
+//            return "update-user";
+//        }
 
+        fahrtService.saveFahrt(fahrt);
+//        userRepository.save(user);
+//        model.addAttribute("f", userRepository.findAll());
+        return "redirect:/showFahrt";
+    }
 }
