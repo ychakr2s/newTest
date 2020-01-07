@@ -98,13 +98,14 @@
                     <!--                        <span class="glyphicon glyphicon-edit"></span></a>-->
                     <!--                    </td>-->
                     <td><a th:href="@{/delete-fahrt/{id}(id=${fahrt.id})}"> <i class="fa fa-trash-o fa-lg"></i>
-
                     </a></td>
-                    <td>
-                        <a href="@{/edit-fahrt/{id}(id=${fahrt.id})}">
-                            <i class="fa fa-pencil" aria-hidden="true"></i>
-                        </a>
-                    </td>
+                    <td><a th:href="@{/edit-fahrt/{id}(id=${fahrt.id})}"> <i class="fa fa-pencil"></i>
+                    </a></td>
+                    <!--                    <td>-->
+                    <!--                        <a href="@{/edit-fahrt/{id}(id=${fahrt.id})}">-->
+                    <!--                            <i class="fa fa-pencil" aria-hidden="true"></i>-->
+                    <!--                        </a>-->
+                    <!--                    </td>-->
                 </tr>
                 </tbody>
             </table>

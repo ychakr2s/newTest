@@ -271,7 +271,6 @@ public class UserCotroller {
         fahrt.setUser(user);
 */
 
-
 //        return "index";
         return "mainIndex";
     }
@@ -310,21 +309,25 @@ public class UserCotroller {
         return "redirect:/display_Fahrt";
     }
 
-
     @GetMapping("/edit-fahrt/{id}")
-    public String editFahrt(@PathVariable("id") int id) {
+    public String editTheFahrt(@PathVariable("id") int id, Model model) {
 //        if (fa.existUser(id)) {
         System.out.println("heyyy  guck mal ..... ich bin in edit : " + id);
 //        Fahrt fahrt = fahrtService.findFahrtById(id);
         System.out.println("fahrt ist gefunden");
 
-        fahrtService.deleteFahrt(id);
+        Fahrt fahrt = fahrtService.findFahrtById(id);
+//                .getEmployeeById(id.get());
+        model.addAttribute("fahrt", fahrt);
+
+//        fahrtService.deleteFahrt(id);
 
         System.out.println("fahrt ist geloescht");
         System.out.println("fahrt ist schon weg");
 
-        return "redirect:/display_Fahrt";
+        return "redirect:/showFahrt";
     }
+
 
 //    @RequestMapping("/edit-user")
 //    public String editUser(@RequestParam int id, HttpServletRequest request) {
